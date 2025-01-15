@@ -35,7 +35,7 @@ class PropertyManager:
         self.price_index = SortedDict()
         self.location_index = defaultdict(list)
         self.status_index = defaultdict(list)
-        
+
         self.lock = threading.Lock()
 
     def add_property(self, user_id: str, property_details: dict) -> str:
@@ -52,10 +52,12 @@ class PropertyManager:
             raise ValueError("Property details must be provided.")
         
         # Check if price and location are mentioned
-        print(property_details)
-        if not property_details.price or not property_details.location:
-            raise ValueError("Property details must include 'price' and 'location' fields.")
+        if not property_details.price or not property_details.location or not property_details.property_type:
+            raise ValueError("Property details must include 'price', 'location' and 'property_type' fields.")
         
+        # Assign default values for optional fields if not provided
+        # description = property_details.get('description', "")
+        # amenities = property_details.get('amenities', [])
         #Generate UniqueID for property, create Property Object and add to db
         property_id = generate_unique_id()
         new_property_data = Property(property_id, user_id, property_details)

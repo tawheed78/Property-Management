@@ -29,7 +29,7 @@ class PropertySearch:
         """
         results = []
         min_price = criteria.get('min_price', 0)
-        max_price = criteria.get('max_price', 9999999999)
+        max_price = criteria.get('max_price', float('inf'))
 
         try:
             for prop_id, prop_data in self.property_manager.property_listings.items():
