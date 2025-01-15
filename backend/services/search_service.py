@@ -114,4 +114,4 @@ class PropertySearch:
         except KeyError as e:
             raise KeyError(f"Error with user or property data: {str(e)}")
         except Exception as e:
-            raise RuntimeError(f"An unexpected error occurred while retrieving shortlisted properties for user '{user_id}': {str(e)}")
+            raise RuntimeError(f"An unexpected error occurred while retrieving the shortlisted properties for user '{user_id}': {str(e)}")
